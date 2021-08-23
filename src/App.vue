@@ -1,150 +1,179 @@
 <template>
-	<div id="app" class="notosanskr">
-		<router-view />
+	<div id="web">
+		<div class="black-bg" v-if="modal == true">
+			<div class="white-bg">
+				<div>
+					<h1>To Do</h1>
+					<button style="float: right" @click="modal = false">X</button>
+				</div>
+				<div>
+					<label>할일</label>
+					<input
+						v-model="todoText"
+						style="text-align: left; position: absolute; width: 474px; height: 50px"
+						type="text"
+						class="p-2"
+						placeholder="할 일을 입력해주세요."
+					/>
+				</div>
+				<div>
+					<label>날짜</label>
+					<input
+						style="top: 339px; left: 1042px; width: 74px; height: 50px"
+						type="number"
+						class="p-2"
+						placeholder="2021"
+					/>
+					<input
+						style="top: 339px; left: 1126px; width: 49px; height: 50px"
+						type="number"
+						class="p-2"
+						placeholder="08"
+					/>
+					<input
+						style="top: 339px; left: 1185px; width: 49px; height: 50px"
+						type="number"
+						class="p-2"
+						placeholder="01"
+					/>
+				</div>
+				<button @click="addTodo">생성 완료</button>
+			</div>
+		</div>
+
+		<div id="app" class="container">
+			<p id="title">To Do List</p>
+			<button type="button" id="plus" @click="modal = true">
+				<img src="./assets/add.png" />
+			</button>
+
+			<Todo
+				id="daliy"
+				v-for="todo in todos"
+				:key="todo.id"
+				:todo="todo"
+				@toggle-checkbox="toggleCheckbox"
+				@click-delete="deleteTodo"
+			/>
+		</div>
 	</div>
 </template>
 
-<style>
-	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+<script>
+	import Todo from "@/views/Todo.vue";
+	export default {
+		components: {
+			Todo,
+		},
+		data() {
+			return {
+				todoText: "",
+				todos: [],
+				modal: false,
+			};
+		},
+		methods: {
+			deleteTodo(id) {
+				const index = this.todos.findIndex(todo => {
+					return todo.id === id;
+				});
+				this.todos.splice(index, 1);
+			},
+			addTodo(e) {
+				this.todos.push({
+					id: Math.random(),
+					text: e.target.value,
+					checked: false,
+				});
+				this.todoText = "";
+			},
+			toggleCheckbox({ id, checked }) {
+				const index = this.todos.findIndex(todo => {
+					return todo.id === id;
+				});
+				this.todos[index].checked = checked;
+			},
+		},
+	};
+</script>
 
-	.notosanskr * {
-		font-family: "Noto Sans KR", sans-serif;
+<style scoped>
+	.white-bg > div {
+		display: flex;
+		justify-content: center;
+		padding-bottom: 7px;
+		align-items: center;
+	}
+	label {
+		flex: 1;
+		text-align: left;
+	}
+	#title {
+		width: 190px;
+		height: 56px;
+		float: left;
+		font-family: "Dream6";
+		font-weight: 40px;
+		font-size: 36px;
+		color: #121212;
+	}
+	div {
+		box-sizing: border-box;
+	}
+	.black-bg {
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		position: fixed;
+		padding: 20px;
+		z-index: 1000;
+	}
+	.white-bg {
+		position: fixed;
+		width: 700px;
+		height: 472px;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		background: white;
+		padding: 70px;
 	}
 
+	#web {
+		width: 100vw;
+		height: 100vh;
+		background-color: #f7f7f7;
+	}
 	#app {
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #191919;
+		position: fixed;
+		top: 251px;
+		left: 400px;
+		width: 480px;
+		height: 280px;
+		text-align: left;
+		font: normal normal medium 30px/42px S-Core Dream 5;
+		letter-spacing: 0px;
+		color: #121212;
+		opacity: 1;
+	}
+	#daliy {
+		border-bottom: solid 2px #121212;
+		position: absolute;
+		top: 96px;
+	}
+	#plus {
+		float: right;
+		width: 40px;
+		height: 40px;
+		border-radius: 70%;
 	}
 
-	/* reset.css */
-	html,
-	body,
-	div,
-	span,
-	applet,
-	object,
-	iframe,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	p,
-	blockquote,
-	pre,
-	a,
-	abbr,
-	acronym,
-	address,
-	big,
-	cite,
-	code,
-	del,
-	dfn,
-	em,
-	img,
-	ins,
-	kbd,
-	q,
-	s,
-	samp,
-	small,
-	strike,
-	strong,
-	sub,
-	sup,
-	tt,
-	var,
-	b,
-	u,
-	i,
-	center,
-	dl,
-	dt,
-	dd,
-	ol,
-	ul,
-	li,
-	fieldset,
-	form,
-	label,
-	legend,
-	table,
-	caption,
-	tbody,
-	tfoot,
-	thead,
-	tr,
-	th,
-	td,
-	article,
-	aside,
-	canvas,
-	details,
-	embed,
-	figure,
-	figcaption,
-	footer,
-	header,
-	hgroup,
-	menu,
-	nav,
-	output,
-	ruby,
-	section,
-	summary,
-	time,
-	mark,
-	audio,
-	video {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: inherit;
-		vertical-align: baseline;
-	}
-	/* HTML5 display-role reset for older browsers */
-	article,
-	aside,
-	details,
-	figcaption,
-	figure,
-	footer,
-	header,
-	hgroup,
-	menu,
-	nav,
-	section {
-		display: block;
-	}
-	body {
-		line-height: 1.5;
-	}
-	ol,
-	ul {
-		list-style: none;
-	}
-	blockquote,
-	q {
-		quotes: none;
-	}
-	blockquote:before,
-	blockquote:after,
-	q:before,
-	q:after {
-		content: "";
-		content: none;
-	}
-	table {
-		border-collapse: collapse;
-		border-spacing: 0;
-	}
-	a {
-		text-decoration: none;
-		color: inherit;
+	@font-face {
+		font-family: "Dream6";
+		src: url("./assets/SCDream6.otf");
 	}
 </style>
