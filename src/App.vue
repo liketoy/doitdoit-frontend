@@ -10,32 +10,17 @@
 					<label>할일</label>
 					<input
 						v-model="todoText"
+						class="input__todo"
 						style="text-align: left; position: absolute; width: 474px; height: 50px"
 						type="text"
-						class="p-2"
 						placeholder="할 일을 입력해주세요."
 					/>
 				</div>
 				<div>
 					<label>날짜</label>
-					<input
-						style="top: 339px; left: 1042px; width: 74px; height: 50px"
-						type="number"
-						class="p-2"
-						placeholder="2021"
-					/>
-					<input
-						style="top: 339px; left: 1126px; width: 49px; height: 50px"
-						type="number"
-						class="p-2"
-						placeholder="08"
-					/>
-					<input
-						style="top: 339px; left: 1185px; width: 49px; height: 50px"
-						type="number"
-						class="p-2"
-						placeholder="01"
-					/>
+					<input style="top: 339px; left: 1042px; width: 74px; height: 50px" type="number" placeholder="2021" />
+					<input style="top: 339px; left: 1126px; width: 49px; height: 50px" type="number" placeholder="08" />
+					<input style="top: 339px; left: 1185px; width: 49px; height: 50px" type="number" placeholder="01" />
 				</div>
 				<button @click="addTodo">생성 완료</button>
 			</div>
@@ -46,8 +31,7 @@
 			<button type="button" id="plus" @click="modal = true">
 				<img src="./assets/add.png" />
 			</button>
-
-			<Todo
+			<TodoVue
 				id="daliy"
 				v-for="todo in todos"
 				:key="todo.id"
@@ -60,10 +44,11 @@
 </template>
 
 <script>
-	import Todo from "@/views/Todo.vue";
+	import TodoVue from "./views/Todo.vue";
+
 	export default {
 		components: {
-			Todo,
+			TodoVue,
 		},
 		data() {
 			return {
@@ -79,10 +64,10 @@
 				});
 				this.todos.splice(index, 1);
 			},
-			addTodo(e) {
+			addTodo() {
 				this.todos.push({
 					id: Math.random(),
-					text: e.target.value,
+					text: this.todoText,
 					checked: false,
 				});
 				this.todoText = "";
@@ -160,16 +145,8 @@
 		color: #121212;
 		opacity: 1;
 	}
-	#daliy {
-		border-bottom: solid 2px #121212;
-		position: absolute;
-		top: 96px;
-	}
 	#plus {
-		float: right;
-		width: 40px;
-		height: 40px;
-		border-radius: 70%;
+		border: none;
 	}
 
 	@font-face {
