@@ -1,17 +1,24 @@
 <template>
-	<div id="app" class="notosanskr">
+	<div id="app">
 		<router-view />
 	</div>
 </template>
 
 <style>
-	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-	.notosanskr * {
-		font-family: "Noto Sans KR", sans-serif;
+	@font-face {
+		font-family: "S-CoreDream";
+		src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff") format("woff");
+		font-weight: 500;
+		font-style: normal;
 	}
-
+	@font-face {
+		font-family: "S-CoreDream";
+		src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff") format("woff");
+		font-weight: 600;
+		font-style: normal;
+	}
 	#app {
+		font-family: "S-CoreDream";
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-align: center;
