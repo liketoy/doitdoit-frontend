@@ -20,7 +20,13 @@
 				<router-link :to="{ name: 'Badge' }">Badge</router-link>
 			</div>
 		</div>
-		<slot></slot>
+		<div class="slot__container">
+			<div class="slot__header">
+				<p>{{ year }}</p>
+				<div><img src="@/assets/user_default.png" alt="user" /></div>
+			</div>
+			<slot></slot>
+		</div>
 	</div>
 </template>
 
@@ -75,6 +81,29 @@
 		align-items: flex-start;
 		margin-left: 100px;
 	}
+	.slot__container {
+		padding: 45px 140px 45px 50px;
+	}
+	.slot__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 102px;
+	}
+	.slot__header p {
+		font-size: 40px;
+		font-weight: 600;
+		border-bottom: 1px solid #191919;
+	}
+	.slot__header div {
+		width: 60px;
+		height: 60px;
+		cursor: pointer;
+	}
+	.slot__header div img {
+		width: 100%;
+	}
 </style>
 
 <script>
@@ -84,6 +113,7 @@
 			const WEEKDAY = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
 			const day = new Date();
 			return {
+				year: day.getFullYear(),
 				today: day.getDate(),
 				weekDay: WEEKDAY[day.getDay()],
 				navVisible: false,
