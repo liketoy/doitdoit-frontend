@@ -19,7 +19,7 @@
 					</button>
 					<div class="letter__btns">
 						<button class="letter__btn">아이디 비밀번호찾기</button>
-						<button class="letter__btn">회원가입</button>
+						<button class="letter__btn" @click="$router.push({ name: 'SignIn' })">회원가입</button>
 					</div>
 				</div>
 			</div>
@@ -112,5 +112,6 @@
 <script>
 	export default {
 		name: "LogIn",
+		methods: {},
 	};
 </script>
