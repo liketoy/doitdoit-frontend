@@ -1,13 +1,16 @@
 <template>
 	<div class="toDoItem__container">
 		<div class="toDoItem__checkbox">
-			<input type="checkbox" :checked="todo.checked" @change="toggleCheckbox" />
+			<input id="toDoItem__item" type="checkbox" :checked="todo.checked" @change="toggleCheckbox" />
+			<label for="toDoItem__item"></label>
 		</div>
 		<div class="todoItem__context">
 			<span :class="todo.checked ? 'text-muted' : ''">
 				{{ todo.text }}
 			</span>
-			<button @click="clickDelete">X</button>
+			<button class="todoItem__cancel" @click="clickDelete">
+				<img src="@/assets/cancel.png" alt="cancel_button" />
+			</button>
 		</div>
 	</div>
 </template>
@@ -20,13 +23,32 @@
 		gap: 20px;
 	}
 	.toDoItem__container:not(:first-child) {
-		margin-top: 40px;
+		margin-top: 20px;
 	}
 	.todoItem__context {
 		border-bottom: 1px solid #191919;
 	}
 	.todoItem__context span {
 		font-size: 30px;
+	}
+	.todoItem__cancel {
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	input[id="toDoItem__item"] {
+		display: none;
+	}
+	input[id="toDoItem__item"] + label {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border: 2px solid #121212;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	input[id="toDoItem__item"]:checked + label {
+		background-color: #121212;
 	}
 </style>
 

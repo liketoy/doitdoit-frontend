@@ -25,6 +25,17 @@
 				<p>{{ year }}</p>
 				<div><img src="@/assets/user_default.png" alt="user" /></div>
 			</div>
+
+			<div class="slot__date">
+				<button class="previous__day" @click="today -= 1">
+					<img src="@/assets/previous.png" alt="previous_button" />
+				</button>
+				<p>{{ month }}월 {{ today }}일</p>
+				<button class="next__day" @click="today -= 1">
+					<img src="@/assets/next.png" alt="next_button" />
+				</button>
+			</div>
+
 			<slot></slot>
 		</div>
 	</div>
@@ -97,12 +108,33 @@
 		border-bottom: 1px solid #191919;
 	}
 	.slot__header div {
-		width: 60px;
-		height: 60px;
+		width: 50px;
+		height: 50px;
 		cursor: pointer;
 	}
 	.slot__header div img {
 		width: 100%;
+	}
+	.slot__date {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 30%;
+		margin-bottom: 80px;
+	}
+	.slot__date p {
+		font-size: 40px;
+		font-weight: 600;
+	}
+	.previous__day {
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	.next__day {
+		border: none;
+		background: none;
+		cursor: pointer;
 	}
 </style>
 
@@ -112,9 +144,11 @@
 		data: function () {
 			const WEEKDAY = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
 			const day = new Date();
+			// const month = day.getmonth() + 1;
 			return {
 				year: day.getFullYear(),
 				today: day.getDate(),
+				// month: month,
 				weekDay: WEEKDAY[day.getDay()],
 				navVisible: false,
 			};
