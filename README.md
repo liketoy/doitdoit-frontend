@@ -2,4 +2,4 @@
 
 frontend repo of Jimmy, Amy, Silver, Emma(doitdoit team)
 
-Amy 입니다.
+Merge 입니다.
