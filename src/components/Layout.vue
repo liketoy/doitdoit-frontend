@@ -97,8 +97,8 @@
 		border-bottom: 1px solid #191919;
 	}
 	.slot__header div {
-		width: 60px;
-		height: 60px;
+		width: 50px;
+		height: 50px;
 		cursor: pointer;
 	}
 	.slot__header div img {
