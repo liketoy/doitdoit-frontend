@@ -24,7 +24,6 @@
 		text-align: center;
 		color: #191919;
 	}
-
 	/* reset.css */
 	html,
 	body,
