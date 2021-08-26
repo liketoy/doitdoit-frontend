@@ -7,7 +7,7 @@ const routes = [
 	{
 		path: "/",
 		name: "Daily",
-		component: () => import(/* webpackChunkName: "daily" */ "../views/Daily.vue"),
+		component: () => import(/* webpackChunkName: "daily" */ "../views/Calendar.vue"),
 	},
 	{
 		path: "/login",
