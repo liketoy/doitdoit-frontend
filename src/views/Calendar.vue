@@ -7,12 +7,12 @@
 					<button class="left position" @click="calendarData(-1)">
 						<img src="../assets/left.png" alt="이전 달로 가기" />
 					</button>
+					<h2 class="subtitle has-text-centered month position">{{ month }}월</h2>
 					<button class="right position" @click="calendarData(1)">
 						<img src="../assets/right.png" alt="다음 달로 가기" />
 					</button>
 				</div>
 				<div>
-					<h2 class="subtitle has-text-centered month position">{{ month }}월</h2>
 					<div class="position days">
 						<div class="day">SUN</div>
 						<div class="day">MON</div>
