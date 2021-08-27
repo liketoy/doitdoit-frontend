@@ -16,20 +16,11 @@
 						<label for="name" style="margin-bottom: 50px">이름</label>
 
 						<label for="nickname" style="margin-bottom: 50px">닉네임</label>
-
-						<label for="present_pw" style="margin-bottom: 50px">현재 비밀번호</label>
-
-						<label for="new_pw" style="margin-bottom: 50px">새 비밀번호</label>
-
-						<label f0r="new_pw">새 비밀번호 확인</label>
 					</div>
 					<div class="profile__info__right">
 						<h2 style="margin-bottom: 50px">abc@email.com</h2>
 						<h2 style="margin-bottom: 50px">abc</h2>
 						<h2 style="margin-bottom: 50px">abcchocolate</h2>
-						<input class="pw__box" type="password" name="present_pw" style="margin-bottom: 50px" />
-						<input class="pw__box" type="password" name="new_pw" style="margin-bottom: 50px" />
-						<input class="pw__box" type="password" name="new_pw_check" />
 					</div>
 				</div>
 			</div>
