@@ -23,7 +23,7 @@
 	</div>
 </template>
 
-<style>
+<style scoped>
 	.fullscreen {
 		width: 100vw;
 		height: 100vh;

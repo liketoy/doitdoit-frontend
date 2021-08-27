@@ -82,6 +82,7 @@
 		margin-left: 100px;
 	}
 	.slot__container {
+		background-color: #ffffff;
 		padding: 45px 140px 45px 50px;
 	}
 	.slot__header {
@@ -107,17 +108,17 @@
 </style>
 
 <script>
+	import { mapState } from "vuex";
+
 	export default {
 		name: "Layout",
 		data: function () {
-			const WEEKDAY = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-			const day = new Date();
 			return {
-				year: day.getFullYear(),
-				today: day.getDate(),
-				weekDay: WEEKDAY[day.getDay()],
 				navVisible: false,
 			};
+		},
+		computed: {
+			...mapState(["year", "today", "weekDay"]),
 		},
 		methods: {
 			showNav: function () {

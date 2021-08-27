@@ -1,11 +1,11 @@
 <template>
 	<layout-vue>
 		<div class="slot__date">
-			<button class="day" @click="today -= 1">
+			<button class="day" @click="SET_PREVIOUS_DAY">
 				<img src="@/assets/previous.png" alt="previous_button" />
 			</button>
 			<p>{{ month }}월 {{ today }}일</p>
-			<button class="day" @click="today -= 1">
+			<button class="day" @click="SET_NEXT_DAY">
 				<img src="@/assets/next.png" alt="next_button" />
 			</button>
 		</div>
@@ -220,6 +220,7 @@
 </style>
 
 <script>
+	import { mapState, mapMutations } from "vuex";
 	import LayoutVue from "../components/Layout.vue";
 	import TodoVue from "../components/Todo.vue";
 
@@ -229,18 +230,18 @@
 			LayoutVue,
 			TodoVue,
 		},
+		computed: {
+			...mapState(["month", "today"]),
+		},
 		data: function () {
-			const day = new Date();
-			const month = day.getMonth() + 1;
 			return {
-				month: month,
-				today: day.getDate(),
 				todoText: "",
-				todos: [],
 				modal: false,
+				todos: [],
 			};
 		},
 		methods: {
+			...mapMutations(["SET_NEXT_DAY", "SET_PREVIOUS_DAY"]),
 			deleteTodo(id) {
 				const index = this.todos.findIndex(todo => {
 					return todo.id === id;
