@@ -82,6 +82,7 @@
 		margin-left: 100px;
 	}
 	.slot__container {
+		background-color: #ffffff;
 		padding: 45px 140px 45px 50px;
 	}
 	.slot__header {

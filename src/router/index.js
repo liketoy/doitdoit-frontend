@@ -6,8 +6,13 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: "/",
-		name: "Daily",
+		name: "Calendar",
 		component: () => import(/* webpackChunkName: "daily" */ "../views/Calendar.vue"),
+	},
+	{
+		path: "/Daily",
+		name: "Daily",
+		component: () => import(/* webpackChunkName: "daily" */ "../views/Daily.vue"),
 	},
 	{
 		path: "/login",
