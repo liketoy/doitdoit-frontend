@@ -16,14 +16,13 @@
 			<div class="menu__nav">
 				<router-link :to="{ name: 'Daily' }">Daily</router-link>
 				<router-link :to="{ name: 'Monthly' }">Monthly</router-link>
-				<router-link :to="{ name: 'Challenge' }">Challenge</router-link>
 				<router-link :to="{ name: 'Badge' }">Badge</router-link>
 			</div>
 		</div>
 		<div class="slot__container">
 			<div class="slot__header">
 				<p>{{ year }}</p>
-				<div><img src="@/assets/user_default.png" alt="user" /></div>
+				<router-link to="/profile"><img src="@/assets/user_default.png" alt="user" /></router-link>
 			</div>
 			<slot></slot>
 		</div>
@@ -39,7 +38,7 @@
 	}
 	.side__menu {
 		display: flex;
-		color: #ffffff;
+		color: #fff;
 		flex-direction: column;
 		background: #121212;
 		padding: 50px 25px;
