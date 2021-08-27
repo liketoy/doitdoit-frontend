@@ -121,7 +121,7 @@
 	}
 	.input__todo {
 		width: 474px;
-		background-color: #767676;
+		background-color: #dbdbdb;
 		font-size: 20px;
 		font-weight: 500;
 		color: #121212;
@@ -140,7 +140,7 @@
 	.modal__year {
 		width: 74px;
 		border: none;
-		background-color: #767676;
+		background-color: #dbdbdb;
 		font-size: 20px;
 		font-weight: 500;
 		color: #121212;
@@ -156,7 +156,7 @@
 	.modal__month {
 		width: 49px;
 		border: none;
-		background-color: #767676;
+		background-color: #dbdbdb;
 		font-size: 20px;
 		font-weight: 500;
 		color: #121212;
@@ -172,7 +172,7 @@
 	.modal__day {
 		width: 49px;
 		border: none;
-		background-color: #767676;
+		background-color: #dbdbdb;
 		font-size: 20px;
 		font-weight: 500;
 		color: #121212;
