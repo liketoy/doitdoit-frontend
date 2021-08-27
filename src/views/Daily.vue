@@ -230,11 +230,11 @@
 			TodoVue,
 		},
 		data: function () {
-			// const day = new Date();
-			// const month = day.getmonth() + 1;
+			const day = new Date();
+			const month = day.getMonth() + 1;
 			return {
-				// month: month,
-				// today: day.getDate(),
+				month: month,
+				today: day.getDate(),
 				todoText: "",
 				todos: [],
 				modal: false,
