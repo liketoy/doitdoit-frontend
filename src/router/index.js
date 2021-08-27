@@ -10,7 +10,7 @@ const routes = [
 		component: () => import(/* webpackChunkName: "daily" */ "../views/Calendar.vue"),
 	},
 	{
-		path: "/Daily",
+		path: "/daily",
 		name: "Daily",
 		component: () => import(/* webpackChunkName: "daily" */ "../views/Daily.vue"),
 	},

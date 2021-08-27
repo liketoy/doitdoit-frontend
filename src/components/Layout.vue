@@ -108,17 +108,17 @@
 </style>
 
 <script>
+	import { mapState } from "vuex";
+
 	export default {
 		name: "Layout",
 		data: function () {
-			const WEEKDAY = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-			const day = new Date();
 			return {
-				year: day.getFullYear(),
-				today: day.getDate(),
-				weekDay: WEEKDAY[day.getDay()],
 				navVisible: false,
 			};
+		},
+		computed: {
+			...mapState(["year", "today", "weekDay"]),
 		},
 		methods: {
 			showNav: function () {
