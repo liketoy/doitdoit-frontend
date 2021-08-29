@@ -9,7 +9,9 @@
 				<img src="@/assets/next.png" alt="next_button" />
 			</button>
 		</div>
-
+		<!-- <div>
+			<Modal-Vue />
+		</div> -->
 		<div class="black-bg" v-if="modal == true">
 			<div class="white-bg">
 				<div class="modal">
@@ -223,12 +225,14 @@
 	import { mapState, mapMutations } from "vuex";
 	import LayoutVue from "../components/Layout.vue";
 	import TodoVue from "../components/Todo.vue";
+	// import ModalVue from "../components/Modal.vue";
 
 	export default {
 		name: "Daily",
 		components: {
 			LayoutVue,
 			TodoVue,
+			// ModalVue,
 		},
 		computed: {
 			...mapState(["month", "today"]),
