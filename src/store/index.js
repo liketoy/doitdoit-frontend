@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import api from "../api";
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
 		month: day.getMonth() + 1,
 		today: day.getDate(),
 		weekDay: WEEKDAY[day.getDay()],
+		token: null,
 	},
 	mutations: {
 		SET_NEXT_DAY(state) {
@@ -23,6 +25,11 @@ export default new Vuex.Store({
 			state.weekDay = WEEKDAY[day.getDay() - 1];
 		},
 	},
-	actions: {},
+	actions: {
+		async GET_KAKAO_LOGIN() {
+			const res = await api.kakaoLogin();
+			console.log(res);
+		},
+	},
 	modules: {},
 });

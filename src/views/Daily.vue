@@ -4,7 +4,7 @@
 			<button class="day" @click="SET_PREVIOUS_DAY">
 				<img src="@/assets/previous.png" alt="previous_button" />
 			</button>
-			<p>{{ month }}월 {{ today }}일</p>
+			<p>{{ $route.query.month }}월 {{ $route.query.day }}일</p>
 			<button class="day" @click="SET_NEXT_DAY">
 				<img src="@/assets/next.png" alt="next_button" />
 			</button>

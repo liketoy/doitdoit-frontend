@@ -5,10 +5,10 @@
 			<div class="loginbox__container">
 				<h2 class="loginbox__title">로그인</h2>
 				<div class="loginbox__wrapper">
-					<button class="loginbox__btn kakako">
+					<router-link to="/login/kakao" class="loginbox__btn kakako">
 						<img class="logo__img" src="@/assets/kakao.png" />
 						<p class="btn__text">카카오톡으로 로그인</p>
-					</button>
+					</router-link>
 					<button class="loginbox__btn naver">
 						<div class="logo__img" style="font-size: 20px; font-weight: 600">N</div>
 						<p class="btn__text">네이버로 로그인</p>

@@ -26,7 +26,8 @@
 						<table class="table has-text-centered is-fullwidth">
 							<tbody>
 								<tr v-for="(date, idx) in dates" :key="idx">
-									<td
+									<router-link
+										:to="{ name: 'Daily', query: { month, day } }"
 										v-for="(day, secondIdx) in date"
 										:key="secondIdx"
 										:class="{
@@ -36,7 +37,7 @@
 										}"
 									>
 										{{ day }}
-									</td>
+									</router-link>
 								</tr>
 							</tbody>
 						</table>

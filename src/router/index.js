@@ -25,6 +25,12 @@ const routes = [
 		component: () => import("../views/LogIn.vue"),
 	},
 	{
+		path: "/login/kakao",
+		beforeEnter() {
+			window.open("https://doitdoit-backend.herokuapp.com/api/v1/users/login/kakao", "_blank");
+		},
+	},
+	{
 		path: "/signin",
 		name: "SignIn",
 		component: () => import("../views/SignIn.vue"),
