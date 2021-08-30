@@ -1,30 +1,42 @@
 <template>
-	<div class="black-bg" v-if="modal == true">
-		<div class="white-bg">
-			<div class="modal">
-				<h1>TO DO</h1>
-				<button class="modal__cancel" @click="modal = false">
-					<img src="@/assets/cancel.png" alt="cancel_button" />
-				</button>
-			</div>
-			<div class="modal__item">
-				<div class="modal__text">
-					<p class="modal__title">할 일</p>
-					<input v-model="todoText" class="input__todo" type="text" placeholder="할 일을 입력해주세요." />
+	<div>
+		<div class="black-bg" v-if="modal == true">
+			<div class="white-bg">
+				<div class="modal">
+					<h1>TO DO</h1>
+					<button class="modal__cancel" @click="modal = false">
+						<img src="@/assets/cancel.png" alt="cancel_button" />
+					</button>
 				</div>
-				<div class="modal__date">
-					<p class="modal__title">날짜</p>
-					<input class="modal__year" type="text" :placeholder="year" />
-					<input class="modal__month" type="text" :placeholder="month" />
-					<input class="modal__day" type="text" :placeholder="today" />
+				<div class="modal__item">
+					<div class="modal__text">
+						<p class="modal__title">할 일</p>
+						<input v-model="todoText" class="input__todo" type="text" placeholder="할 일을 입력해주세요." />
+					</div>
+					<div class="modal__date">
+						<p class="modal__title">날짜</p>
+						<input class="modal__year" type="text" :placeholder="year" />
+						<input class="modal__month" type="text" :placeholder="month" />
+						<input class="modal__day" type="text" :placeholder="today" />
+					</div>
 				</div>
+				<button class="modal__add" @click="addTodo">생성 완료</button>
 			</div>
-			<button class="modal__add" @click="addTodo">생성 완료</button>
 		</div>
+		<button class="toDoList__btn" type="button" @click="modal = true">
+			<img src="@/assets/add.png" alt="add_button" />
+		</button>
 	</div>
 </template>
 
 <style scoped>
+	.toDoList__btn {
+		border: none;
+		background: none;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+	}
 	.black-bg {
 		width: 100%;
 		height: 100%;

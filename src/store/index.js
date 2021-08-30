@@ -28,10 +28,17 @@ export default new Vuex.Store({
 					state.month = day.getMonth() + 1;
 				}
 			}
+			if (state.weekDay == WEEKDAY[7]) {
+				state.weekDay = WEEKDAY[0];
+			}
 		},
 		SET_PREVIOUS_DAY(state) {
 			state.today = day.setDate(state.today - 1);
 			state.today = day.getDate();
+			state.weekDay = WEEKDAY[day.getDay() - 1];
+			if (state.weekDay == WEEKDAY[-1]) {
+				state.weekDay = WEEKDAY[6];
+			}
 			if (state.today == 31) {
 				if (
 					state.month == 1 ||

@@ -12,7 +12,7 @@
 		<!-- <div>
 			<Modal-Vue />
 		</div> -->
-		<div class="black-bg" v-if="modal == true">
+		<!-- <div class="black-bg" v-if="modal == true">
 			<div class="white-bg">
 				<div class="modal">
 					<h1>TO DO</h1>
@@ -34,13 +34,14 @@
 				</div>
 				<button class="modal__add" @click="addTodo">생성 완료</button>
 			</div>
-		</div>
+		</div> -->
 		<div class="toDoList__container">
 			<div class="toDoList__top">
 				<p class="toDoList__title">To Do List</p>
-				<button class="toDoList__btn" type="button" @click="modal = true">
+				<Modal-Vue />
+				<!-- <button class="toDoList__btn" type="button" @click="modal = true">
 					<img src="@/assets/add.png" alt="add_button" />
-				</button>
+				</button> -->
 			</div>
 			<div class="toDoList__list">
 				<TodoVue
@@ -73,7 +74,7 @@
 		font-size: 40px;
 		font-weight: 600;
 	}
-	.black-bg {
+	/* .black-bg {
 		width: 100%;
 		height: 100%;
 		background: rgba(0, 0, 0, 0.5);
@@ -194,7 +195,7 @@
 		font-weight: 600;
 		color: #ffffff;
 		background: #121212;
-	}
+	}*/
 	.toDoList__container {
 		width: 500px;
 	}
@@ -209,13 +210,13 @@
 		font-weight: 600;
 		text-align: left;
 	}
-	.toDoList__btn {
+	/* .toDoList__btn {
 		border: none;
 		background: none;
 		width: 40px;
 		height: 40px;
 		cursor: pointer;
-	}
+	} */
 	.toDoList__btn img {
 		width: 100%;
 	}
@@ -225,14 +226,14 @@
 	import { mapState, mapMutations } from "vuex";
 	import LayoutVue from "../components/Layout.vue";
 	import TodoVue from "../components/Todo.vue";
-	// import ModalVue from "../components/Modal.vue";
+	import ModalVue from "../components/Modal.vue";
 
 	export default {
 		name: "Daily",
 		components: {
 			LayoutVue,
 			TodoVue,
-			// ModalVue,
+			ModalVue,
 		},
 		computed: {
 			...mapState(["year", "month", "today"]),
