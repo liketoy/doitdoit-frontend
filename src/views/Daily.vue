@@ -27,9 +27,9 @@
 					</div>
 					<div class="modal__date">
 						<p class="modal__title">날짜</p>
-						<input class="modal__year" type="text" placeholder="2021" />
-						<input class="modal__month" type="text" placeholder="08" />
-						<input class="modal__day" type="text" placeholder="01" />
+						<input class="modal__year" type="text" :placeholder="year" />
+						<input class="modal__month" type="text" :placeholder="month" />
+						<input class="modal__day" type="text" :placeholder="today" />
 					</div>
 				</div>
 				<button class="modal__add" @click="addTodo">생성 완료</button>
@@ -235,7 +235,7 @@
 			// ModalVue,
 		},
 		computed: {
-			...mapState(["month", "today"]),
+			...mapState(["year", "month", "today"]),
 		},
 		data: function () {
 			return {

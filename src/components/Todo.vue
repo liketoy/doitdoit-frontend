@@ -5,7 +5,7 @@
 			<label for="toDoItem__item"></label>
 		</div>
 		<div class="todoItem__context">
-			<span :style="todo.checked ? 'todoItem__checked' : ''">
+			<span :style="todo.checked ? 'text-decoration: line-through' : ''">
 				{{ todo.text }}
 			</span>
 			<button class="todoItem__cancel" @click="clickDelete">
@@ -30,10 +30,6 @@
 	}
 	.todoItem__context span {
 		font-size: 30px;
-	}
-	.todoItem__checked {
-		color: #707070;
-		text-decoration: line-through;
 	}
 	.todoItem__cancel {
 		border: none;
