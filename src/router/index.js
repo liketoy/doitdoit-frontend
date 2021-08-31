@@ -15,9 +15,17 @@ const routes = [
 		component: () => import("../views/Daily.vue"),
 	},
 	{
+		path: "/Monthly/:today",
+		name: "Monthly",
+		component: () => import("@/views/Daily.vue"),
+		props: true,
+	},
+
+	{
 		path: "/monthly",
 		name: "Monthly",
-		component: () => import("../views/Calendar.vue"),
+		component: () => import("../views/Monthly.vue"),
+		props: true,
 	},
 	{
 		path: "/login",
@@ -43,6 +51,11 @@ const routes = [
 		component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
 	},
 ];
+
+// const Daily = {
+// 	props: ["today"],
+// 	template: "<p>Daily {{ today }}<p>",
+// };
 
 const router = new VueRouter({
 	mode: "history",

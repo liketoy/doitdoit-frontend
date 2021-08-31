@@ -1,8 +1,9 @@
 <template>
 	<layout-vue>
 		<div>
-			<div id="add" class="position" style="cursor: pointer" ;><a href="#"></a></div>
+			<div id="add" class="position"><a href="#"></a></div>
 			<div>
+				<!-- <router-view></router-view> -->
 				<div>
 					<button class="left position" @click="calendarData(-1)">
 						<img src="../assets/left.png" alt="이전 달로 가기" />
@@ -36,7 +37,8 @@
 											'has-text-primary': day === today && month === currentMonth && year === currentYear,
 										}"
 									>
-										<router-link :to="{ name: 'Daily' }">{{ day }}</router-link>
+										<!-- <router-link :to="{ name: 'Daily' }">{{ day }}</router-link> -->
+										<router-link :to="{ name: 'Daily', params: { date: 'today' } }">{{ day }}</router-link>
 									</td>
 								</tr>
 							</tbody>
@@ -54,6 +56,7 @@
 		left: 1680px;
 		width: 40px;
 		height: 40px;
+		cursor: pointer;
 		background: transparent url("../assets/add.png") 0% 0% no-repeat padding-box;
 	}
 
@@ -128,12 +131,13 @@
 	import LayoutVue from "../components/Layout.vue";
 
 	export default {
-		name: "Calendar",
+		name: "Monthly",
 		components: {
 			LayoutVue,
 		},
 		data() {
 			return {
+				date: this.$route.params.date,
 				days: ["SUN", "MON", "TUE", "WEN", "THU", "FRI", "SAT"],
 				dates: [],
 				currentYear: 0,
@@ -155,6 +159,10 @@
 			this.calendarData();
 		},
 		methods: {
+			//Monthly.vue
+			clickParams() {
+				this.$router.push({ name: "Daily", params: { date: "today" } });
+			},
 			calendarData(arg) {
 				if (arg < 0) {
 					this.month -= 1;

@@ -234,6 +234,13 @@
 			TodoVue,
 			// ModalVue,
 		},
+		// daily.vue
+		props: {
+			today: {
+				type: Object,
+				required: true,
+			},
+		},
 		computed: {
 			...mapState(["year", "month", "today"]),
 		},
