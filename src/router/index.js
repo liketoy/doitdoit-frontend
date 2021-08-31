@@ -15,9 +15,17 @@ const routes = [
 		component: () => import("../views/Daily.vue"),
 	},
 	{
+		path: "/monthly/:day",
+		name: "Monthly",
+		component: () => import("@/views/Daily.vue"),
+		props: true,
+	},
+
+	{
 		path: "/monthly",
 		name: "Monthly",
-		component: () => import("../views/Calendar.vue"),
+		component: () => import("../views/Monthly.vue"),
+		props: true,
 	},
 	{
 		path: "/login",

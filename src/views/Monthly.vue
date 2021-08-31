@@ -8,13 +8,13 @@
 					<button class="left position" @click="calendarData(-1)">
 						<img src="../assets/left.png" alt="이전 달로 가기" />
 					</button>
-					<h2 class="subtitle has-text-centered month position">{{ month }}월</h2>
+					<h2 class="month position">{{ month }}월</h2>
 					<button class="right position" @click="calendarData(1)">
 						<img src="../assets/right.png" alt="다음 달로 가기" />
 					</button>
 				</div>
 				<div>
-					<div class="position days">
+					<div class="days position">
 						<div class="day">SUN</div>
 						<div class="day">MON</div>
 						<div class="day">TUE</div>
@@ -23,11 +23,12 @@
 						<div class="day">FRI</div>
 						<div class="day">SAT</div>
 					</div>
-					<div id="calendar" class="position">
+					<div class="calendar position">
 						<table class="table has-text-centered is-fullwidth">
 							<tbody>
 								<tr v-for="(date, idx) in dates" :key="idx">
 									<td
+										class="btn"
 										v-for="(day, secondIdx) in date"
 										:key="secondIdx"
 										:class="{
@@ -36,7 +37,7 @@
 											'has-text-primary': day === today && month === currentMonth && year === currentYear,
 										}"
 									>
-										{{ day }}
+										<router-link :to="{ name: 'Daily', params: { month: month, date: day } }">{{ day }}</router-link>
 									</td>
 								</tr>
 							</tbody>
@@ -54,9 +55,11 @@
 		left: 1680px;
 		width: 40px;
 		height: 40px;
+		cursor: pointer;
 		background: transparent url("../assets/add.png") 0% 0% no-repeat padding-box;
 	}
-	#calendar {
+
+	.calendar {
 		top: 426px;
 		left: 685px;
 		width: 1040px;
@@ -64,9 +67,11 @@
 		display: grid;
 		font-size: 40px;
 	}
+
 	.position {
-		position: absolute;
+		position: fixed;
 	}
+
 	.left {
 		top: 201px;
 		left: 1086px;
@@ -90,28 +95,34 @@
 	}
 
 	.month {
-		top: 190px;
-		right: 669px;
+		top: 174px;
+		left: 1158px;
 		width: 95px;
 		height: 83px;
-		font-size: 4vh;
+		font-size: 60px;
 	}
 
 	.days {
+		display: block;
+		width: 1040px;
 		top: 307px;
 		left: 686px;
-		letter-spacing: 0px;
 		color: #121212;
 	}
 
 	.days div {
-		list-style-type: none;
 		float: left;
 		width: 118px;
 		height: 69px;
 		margin: 15px;
 		font-size: 50px;
 		text-align: center;
+	}
+	.btn a {
+		cursor: pointer;
+	}
+	.btn a:hover {
+		color: #ccc;
 	}
 </style>
 
@@ -120,13 +131,14 @@
 	import ModalVue from "../components/Modal.vue";
 
 	export default {
-		name: "Calendar",
+		name: "Monthly",
 		components: {
 			LayoutVue,
 			ModalVue,
 		},
 		data() {
 			return {
+				date: this.$route.params.date,
 				days: ["SUN", "MON", "TUE", "WEN", "THU", "FRI", "SAT"],
 				dates: [],
 				currentYear: 0,
@@ -149,6 +161,9 @@
 			this.calendarData();
 		},
 		methods: {
+			clickParams() {
+				this.$router.push({ name: "Daily", params: { date: "day" } });
+			},
 			calendarData(arg) {
 				if (arg < 0) {
 					this.month -= 1;

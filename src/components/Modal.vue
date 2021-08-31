@@ -31,6 +31,7 @@
 		background: rgba(0, 0, 0, 0.5);
 		position: fixed;
 		padding: 20px;
+		z-index: 999;
 		left: 0;
 		top: 0;
 	}
