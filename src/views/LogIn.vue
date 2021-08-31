@@ -9,10 +9,7 @@
 						<img class="logo__img" src="@/assets/kakao.png" />
 						<p class="btn__text">카카오톡으로 로그인</p>
 					</button>
-					<button class="loginbox__btn naver">
-						<div class="logo__img" style="font-size: 20px; font-weight: 600">N</div>
-						<p class="btn__text">네이버로 로그인</p>
-					</button>
+
 					<button class="loginbox__btn google">
 						<img class="logo__img" src="@/assets/google.png" />
 						<p class="btn__text">Google로 로그인</p>
@@ -77,9 +74,7 @@
 	.kakako {
 		background: #f5dc00;
 	}
-	.naver {
-		background: #00cf00;
-	}
+
 	.google {
 		background: #eb4f4d;
 	}
