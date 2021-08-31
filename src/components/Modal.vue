@@ -3,7 +3,7 @@
 		<div class="white-bg">
 			<div class="modal">
 				<h1>TO DO</h1>
-				<button class="modal__cancel" @click="modal = false">
+				<button class="modal__cancel" @click="onEmit">
 					<img src="@/assets/cancel.png" alt="cancel_button" />
 				</button>
 			</div>
@@ -154,8 +154,27 @@
 
 	export default {
 		name: "Modal",
+		props: ["modal"],
+		data() {
+			return {
+				todoText: "",
+			};
+		},
 		computed: {
 			...mapState(["year", "month", "today"]),
+		},
+		methods: {
+			onEmit() {
+				this.$emit("setModal");
+			},
+			addTodo() {
+				this.todos.push({
+					id: Math.random(),
+					text: this.todoText,
+					checked: false,
+				});
+				this.todoText = "";
+			},
 		},
 	};
 </script>

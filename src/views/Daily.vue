@@ -9,32 +9,7 @@
 				<img src="@/assets/next.png" alt="next_button" />
 			</button>
 		</div>
-		<!-- <div>
-			<Modal-Vue />
-		</div> -->
-		<div class="black-bg" v-if="modal == true">
-			<div class="white-bg">
-				<div class="modal">
-					<h1>TO DO</h1>
-					<button class="modal__cancel" @click="modal = false">
-						<img src="@/assets/cancel.png" alt="cancel_button" />
-					</button>
-				</div>
-				<div class="modal__item">
-					<div class="modal__text">
-						<p class="modal__title">할 일</p>
-						<input v-model="todoText" class="input__todo" type="text" placeholder="할 일을 입력해주세요." />
-					</div>
-					<div class="modal__date">
-						<p class="modal__title">날짜</p>
-						<input class="modal__year" type="text" :placeholder="year" />
-						<input class="modal__month" type="text" :placeholder="month" />
-						<input class="modal__day" type="text" :placeholder="today" />
-					</div>
-				</div>
-				<button class="modal__add" @click="addTodo">생성 완료</button>
-			</div>
-		</div>
+		<ModalVue :modal="modal" @setModal="modal = !modal" />
 		<div class="toDoList__container">
 			<div class="toDoList__top">
 				<p class="toDoList__title">To Do List</p>
@@ -225,18 +200,17 @@
 	import { mapState, mapMutations } from "vuex";
 	import LayoutVue from "../components/Layout.vue";
 	import TodoVue from "../components/Todo.vue";
-	// import ModalVue from "../components/Modal.vue";
+	import ModalVue from "../components/Modal.vue";
 
 	export default {
 		name: "Daily",
 		components: {
 			LayoutVue,
 			TodoVue,
-			// ModalVue,
+			ModalVue,
 		},
-		// daily.vue
 		props: {
-			today: {
+			day: {
 				type: Object,
 				required: true,
 			},
@@ -246,7 +220,6 @@
 		},
 		data: function () {
 			return {
-				todoText: "",
 				modal: false,
 				todos: [],
 			};
@@ -258,14 +231,6 @@
 					return todo.id === id;
 				});
 				this.todos.splice(index, 1);
-			},
-			addTodo() {
-				this.todos.push({
-					id: Math.random(),
-					text: this.todoText,
-					checked: false,
-				});
-				this.todoText = "";
 			},
 			toggleCheckbox({ id, checked }) {
 				const index = this.todos.findIndex(todo => {

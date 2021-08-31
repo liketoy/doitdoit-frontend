@@ -1,8 +1,8 @@
 <template>
 	<div class="toDoItem__container">
 		<div class="toDoItem__checkbox">
-			<input id="toDoItem__item" type="checkbox" :checked="todo.checked" @change="toggleCheckbox" />
-			<label for="toDoItem__item"></label>
+			<input :id="todo.id" type="checkbox" :checked="todo.checked" @change="toggleCheckbox" />
+			<label :for="todo.id"></label>
 		</div>
 		<div class="todoItem__context">
 			<span :style="todo.checked ? 'text-decoration: line-through' : ''">
@@ -36,10 +36,10 @@
 		background: none;
 		cursor: pointer;
 	}
-	input[id="toDoItem__item"] {
+	input {
 		display: none;
 	}
-	input[id="toDoItem__item"] + label {
+	input + label {
 		display: inline-block;
 		width: 20px;
 		height: 20px;
@@ -47,7 +47,7 @@
 		border-radius: 50%;
 		cursor: pointer;
 	}
-	input[id="toDoItem__item"]:checked + label {
+	input:checked + label {
 		background-color: #121212;
 	}
 </style>
