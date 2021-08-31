@@ -9,7 +9,7 @@
 				<img src="@/assets/next.png" alt="next_button" />
 			</button>
 		</div>
-		<ModalVue :modal="modal" @setModal="modal = !modal" />
+		<ModalVue :modal="modal" @setModal="modal = !modal" @addTodo="addTodo" />
 		<div class="toDoList__container">
 			<div class="toDoList__top">
 				<p class="toDoList__title">To Do List</p>
@@ -231,6 +231,9 @@
 					return todo.id === id;
 				});
 				this.todos[index].checked = checked;
+			},
+			addTodo(val) {
+				this.todos.push(val);
 			},
 		},
 	};

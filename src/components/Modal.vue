@@ -168,7 +168,7 @@
 				this.$emit("setModal");
 			},
 			addTodo() {
-				this.todos.push({
+				this.$emit("addTodo", {
 					id: Math.random(),
 					text: this.todoText,
 					checked: false,

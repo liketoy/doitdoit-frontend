@@ -16,13 +16,12 @@
 			<div class="menu__nav">
 				<router-link :to="{ name: 'Daily' }">Daily</router-link>
 				<router-link :to="{ name: 'Monthly' }">Monthly</router-link>
-				<router-link :to="{ name: 'Badge' }">Badge</router-link>
 			</div>
 		</div>
 		<div class="slot__container">
 			<div class="slot__header">
 				<p>{{ year }}</p>
-				<router-link to="/profile"><img src="@/assets/user_default.png" alt="user" /></router-link>
+				<router-link :to="{ name: 'Login' }"><img src="@/assets/user_default.png" alt="user" /></router-link>
 			</div>
 			<slot></slot>
 		</div>
