@@ -155,12 +155,25 @@
 	export default {
 		name: "Modal",
 		props: ["modal"],
+		data() {
+			return {
+				todoText: "",
+			};
+		},
 		computed: {
 			...mapState(["year", "month", "today"]),
 		},
 		methods: {
 			onEmit() {
 				this.$emit("setModal");
+			},
+			addTodo() {
+				this.todos.push({
+					id: Math.random(),
+					text: this.todoText,
+					checked: false,
+				});
+				this.todoText = "";
 			},
 		},
 	};

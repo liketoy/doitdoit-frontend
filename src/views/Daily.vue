@@ -214,7 +214,6 @@
 		},
 		data: function () {
 			return {
-				todoText: "",
 				modal: false,
 				todos: [],
 			};
@@ -226,14 +225,6 @@
 					return todo.id === id;
 				});
 				this.todos.splice(index, 1);
-			},
-			addTodo() {
-				this.todos.push({
-					id: Math.random(),
-					text: this.todoText,
-					checked: false,
-				});
-				this.todoText = "";
 			},
 			toggleCheckbox({ id, checked }) {
 				const index = this.todos.findIndex(todo => {
