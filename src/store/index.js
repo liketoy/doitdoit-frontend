@@ -18,7 +18,7 @@ export default new Vuex.Store({
 		SET_NEXT_DAY(state) {
 			state.today = day.setDate(state.today + 1);
 			state.today = day.getDate();
-			state.weekDay = WEEKDAY[day.getDay() + 1];
+			state.weekDay = WEEKDAY[day.getDay()];
 			if (state.today == 1) {
 				state.month += 1;
 				if (state.month == 13) {
@@ -32,6 +32,7 @@ export default new Vuex.Store({
 		SET_PREVIOUS_DAY(state) {
 			state.today = day.setDate(state.today - 1);
 			state.today = day.getDate();
+			state.weekDay = WEEKDAY[day.getDay()];
 			if (state.today == 31) {
 				if (
 					state.month == 1 ||

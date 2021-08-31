@@ -1,7 +1,8 @@
 <template>
 	<layout-vue>
 		<div>
-			<div id="add" class="position" style="cursor: pointer" onclick="location.href='#';"><a href="#"></a></div>
+			<div id="add" class="position" style="cursor: pointer" @click="modal = true"></div>
+			<ModalVue :modal="modal" @setModal="modal = !modal" />
 			<div>
 				<div>
 					<button class="left position" @click="calendarData(-1)">
@@ -116,11 +117,13 @@
 
 <script>
 	import LayoutVue from "../components/Layout.vue";
+	import ModalVue from "../components/Modal.vue";
 
 	export default {
 		name: "Calendar",
 		components: {
 			LayoutVue,
+			ModalVue,
 		},
 		data() {
 			return {
@@ -133,6 +136,7 @@
 				lastMonthStart: 0,
 				nextMonthStart: 0,
 				today: 0,
+				modal: false,
 			};
 		},
 		created() {
