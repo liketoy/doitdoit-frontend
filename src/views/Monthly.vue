@@ -37,7 +37,7 @@
 											'has-text-primary': day === today && month === currentMonth && year === currentYear,
 										}"
 									>
-										<router-link :to="{ name: 'Daily', params: { date: 'day' } }">{{ day }}</router-link>
+										<router-link :to="{ name: 'Daily', params: { month: month, date: day } }">{{ day }}</router-link>
 									</td>
 								</tr>
 							</tbody>
